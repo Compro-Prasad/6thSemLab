@@ -4,6 +4,7 @@
 #include <sstream>
 #include <string.h>
 #include <algorithm>
+#include <stdio.h>
 #include <limits.h>
 
 using namespace std;
@@ -85,12 +86,11 @@ vector<string> split(string str, string sep) {
 int main() {
     cout << "Enter help to see the help" << endl;
     vector<student> all;
-    string input;
     vector<string> inputArgs;
     do {
         cout << ">> ";
         cout.flush();
-        cin.ignore();
+        string input;
         getline(cin, input);
         inputArgs = move(split(input, " "));
         if (inputArgs[0] == "help") {
@@ -101,6 +101,7 @@ int main() {
         } else if (inputArgs[0] == "add") {
             student s;
             cin >> s;
+            cout << s << endl;
             all.push_back(s);
         } else if (inputArgs[0] == "remove") {
             stringstream stream(inputArgs[1]);
@@ -119,6 +120,8 @@ int main() {
         } else if (inputArgs[0] == "list") {
             cout << all;
         }
-    } while (inputArgs[0] != "quit");
+        char *s = stdin->_IO_read_ptr;
+        stdin->_IO_read_ptr = s + strlen(s);
+    } while (inputArgs.size() > 0 && inputArgs[0] != "quit");
     return 0;
 }
