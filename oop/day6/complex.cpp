@@ -12,12 +12,15 @@ public:
     real(r), imag(i) {}
   T r() const { return this->real; }
   T i() const { return this->imag; }
-  Complex operator+(const Complex<T> &y) const {
-    Complex<T> z(this->r() + y.r(), this->i() + y.i());
-    return z;
-  }
+  Complex operator+(const Complex<T> &y) const;
   void input();
 };
+
+template <typename T>
+Complex<T> Complex<T>::operator+(const Complex<T> &y) const {
+  Complex<T> z(this->r() + y.r(), this->i() + y.i());
+  return z;
+}
 
 template <typename T>
 void Complex<T>::input() {
