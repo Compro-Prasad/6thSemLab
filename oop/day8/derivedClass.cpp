@@ -18,6 +18,16 @@ public:
     : name(n), code(c)
   {}
 
+  void updateName(const string &s)
+  {
+    this->name = s;
+  }
+
+  void updateCode(const int c)
+  {
+    this->code = c;
+  }
+
   void display()
   {
     cout << "Person object" << endl;
@@ -37,6 +47,11 @@ public:
 
   account(const float p) : pay(p)
   {}
+
+  void updatePay(const float p)
+  {
+    this->pay = p;
+  }
 
   void display()
   {
@@ -58,6 +73,11 @@ public:
 
   admin(const int e) : experience(e)
   {}
+
+  void updateExp(const int e)
+  {
+    this->experience = e;
+  }
 
   void display()
   {
@@ -88,13 +108,46 @@ public:
 
 int main ()
 {
-  person p("Abhishek", 2);
-  account a("Prasad", 3, 32000);
-  admin ad("Sonu", 4, 3);
   master m("Ankush", 5, 40000, 4);
-  p.display();
-  a.display();
-  ad.display();
-  m.display();
+  int n;
+  string s;
+  int x;
+  float f;
+  while (true) {
+    m.display();
+    cout << "Update:\n";
+    cout << "1. Name\n";
+    cout << "2. Code\n";
+    cout << "3. Pay\n";
+    cout << "4. Experience\n";
+    cout << "5. Quit\nChoice: ";
+    cin >> n;
+    switch (n) {
+    case 1:
+      cout << "Enter name: ";
+      cin >> s;
+      m.updateName(s);
+      break;
+    case 2:
+      cout << "Enter code: ";
+      cin >> x;
+      m.updateCode(x);
+      break;
+    case 3:
+      cout << "Enter pay: ";
+      cin >> f;
+      m.updatePay(f);
+      break;
+    case 4:
+      cout << "Enter experience: ";
+      cin >> x;
+      m.updateExp(x);
+      break;
+    case 5:
+      return 0;
+    default:
+      cout << "Wrong choice\n";
+    }
+  }
   return 0;
 }
